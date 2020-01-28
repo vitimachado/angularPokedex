@@ -1,0 +1,15 @@
+
+<div class="container">
+    <div style="margin-top: 20px;">
+        <mat-form-field class="example-full-width">
+        <input type="name" matInput placeholder="Nome do Pokemón" [ngModel]="mymodel" (ngModelChange)="valuechange($event)">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" *ngFor="let card of cards; let index = index;">   
+            <app-card-pokemon [card]="card" [bnt]="true"></app-card-pokemon>
+        </div>
+    </div>
+</div>

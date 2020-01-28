@@ -1,0 +1,18 @@
+<mat-card class="card-container">
+    <h2 class="example-h2">{{title}}</h2>
+    <mat-card-content>
+<mat-list role="list" *ngFor="let tipo of tipos" style="margin-bottom: 20px;">
+    <mat-list-item role="listitem">Tipo: <strong style="margin-left: 5px;">{{tipo.type}}</strong></mat-list-item>
+    <mat-list-item role="listitem"> 
+        <mat-progress-bar
+            class="example-margin"
+            [color]="accent"
+            [mode]="determinate"
+            [value]="tipo.value*multiplicacao"
+            [bufferValue]="bufferValue">
+        </mat-progress-bar> <div style="margin-left: 10px;">{{tipo.value}}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
+</mat-card-content>
+</mat-card>

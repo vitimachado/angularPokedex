@@ -1,0 +1,54 @@
+<p *ngIf="pokemon == null; else pokedex"><mat-spinner [color]="accent" style="margin-top: 40px; margin:0 auto; color: red;" ></mat-spinner></p>
+
+<ng-template #pokedex>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">   
+                <app-card-pokemon *ngIf="pokemon != null" [card]="pokemon" [bnt]="false"></app-card-pokemon>
+            </div>
+            <div class="col-md-4">   
+                <mat-card class="card-container">
+                    <mat-card-content>
+                      <h2 class="example-h2">Ataque(s)</h2>
+                  
+                        <!-- <mat-progress-bar
+                            class="example-margin"
+                            [color]="accent"
+                            [mode]="determinate"
+                            [value]="40"
+                            [bufferValue]="bufferValue">
+                        </mat-progress-bar> -->
+
+                        <mat-list role="list" *ngFor="let attack of pokemon.attacks">
+                            <mat-list-item role="listitem">Nome: {{attack.name}}</mat-list-item>
+                            <mat-list-item role="listitem">Dano: {{attack.damage}}</mat-list-item>
+                            <mat-list-item role="listitem">Custo de mana: {{attack.convertedEnergyCost}}</mat-list-item>
+                            <mat-list-item role="listitem">Descrição: {{attack.text}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+                    </mat-card-content>
+                  </mat-card>
+            </div>
+            <div class="col-md-4">   
+                <mat-card class="card-container">
+                    <mat-card-content>
+                  
+                        <!-- <mat-progress-bar
+                            class="example-margin"
+                            [color]="accent"
+                            [mode]="determinate"
+                            [value]="40"
+                            [bufferValue]="bufferValue">
+                        </mat-progress-bar> -->
+<app-card-list [title]="'Resistência(s)'" [tipos]="pokemon.resistances" [multiplicacao]="-1"></app-card-list>
+<app-card-list [title]="'Fraqueza(s)'" [tipos]="pokemon.weaknesses" [multiplicacao]="1"></app-card-list>
+
+
+
+                    </mat-card-content>
+                  </mat-card>
+            </div>
+        </div>
+    </div>
+    <button mat-fab color="warn" (click)="paginaPrincipal()"><i class="material-icons">arrow_back_ios</i></button>
+</ng-template>
